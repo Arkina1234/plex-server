@@ -1,4 +1,4 @@
-name: ci
+name: pull
 
 on:
   push:
@@ -12,12 +12,6 @@ jobs:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
-          username: arkinagaming
-          password: ad922377-2254-46bd-8211-5a26a13e61a3
       - 
         name: Docker Buildx Pull or Build
         uses: djbender/docker-buildx-pull-or-build@v0.3
