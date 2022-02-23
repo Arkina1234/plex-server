@@ -1,7 +1,31 @@
-- name: Docker Buildx Pull or Build
-  uses: djbender/docker-buildx-pull-or-build@v0.3
-  with:
-    docker_username: arkinagaming
-    docker_password: ad922377-2254-46bd-8211-5a26a13e61a3
-    dockerfile: test.Dockerfile
-    image: plexinc/pms-docker:latest
+name: ci
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: arkinagaming
+          password: ad922377-2254-46bd-8211-5a26a13e61a3
+      - 
+        name: Docker Buildx Pull or Build
+        uses: djbender/docker-buildx-pull-or-build@v0.3
+        with:
+          docker_username: arkinagaming
+          docker_password: ad922377-2254-46bd-8211-5a26a13e61a3
+          dockerfile: test.Dockerfile
+          image: plexinc/pms-docker:latest
