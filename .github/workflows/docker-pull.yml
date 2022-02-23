@@ -1,0 +1,7 @@
+- name: Docker Buildx Pull or Build
+  uses: djbender/docker-buildx-pull-or-build@v0.3
+  with:
+    docker_username: arkinagaming
+    docker_password: ad922377-2254-46bd-8211-5a26a13e61a3
+    dockerfile: test.Dockerfile
+    image: plexinc/pms-docker:latest
